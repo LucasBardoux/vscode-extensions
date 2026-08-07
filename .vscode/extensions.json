@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "editorconfig.editorconfig",
+    "connor4312.esbuild-problem-matchers",
+    "amodio.tsl-problem-matcher"
+  ]
+}

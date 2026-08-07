@@ -1,0 +1,29 @@
+{
+  "name": "vscode-extensions",
+  "private": false,
+  "version": "0.0.0",
+  "description": "Monorepo for VS Code extensions and shared packages",
+  "license": "MIT",
+  "workspaces": [
+    "extensions/*",
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=22.0.0",
+    "npm": ">=11.0.0"
+  },
+  "scripts": {
+    "build": "npm run build --workspaces --if-present",
+    "watch": "npm run watch --workspaces --if-present",
+    "typecheck": "tsc --build",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "npm run test --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.2",
+    "prettier": "^3.9.6",
+    "typescript": "^7.0.2"
+  }
+}
