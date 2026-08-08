@@ -1,0 +1,15 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "npm: build - extensions/node-network-monitor",
+      "type": "npm",
+      "script": "build",
+      "path": "extensions/node-network-monitor",
+      "problemMatcher": [],
+      "presentation": {
+        "reveal": "silent"
+      }
+    }
+  ]
+}

@@ -1,4 +1,8 @@
 {
   "files": [],
-  "references": []
+  "references": [
+    { "path": "packages/network-monitor-core" },
+    { "path": "extensions/node-network-monitor" },
+    { "path": "extensions/node-network-monitor/tsconfig.webview.json" }
+  ]
 }

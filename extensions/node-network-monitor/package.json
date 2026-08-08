@@ -1,0 +1,154 @@
+{
+  "name": "node-network-monitor",
+  "displayName": "Node Network Monitor",
+  "icon": "media/logo.png",
+  "description": "Capture outgoing fetch/http(s) requests made by a Node.js backend and inspect method, headers, and bodies in a sidebar panel.",
+  "version": "0.0.2",
+  "private": true,
+  "publisher": "LucasBardoux",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LucasBardoux/vscode-extensions"
+  },
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Debuggers",
+    "Other"
+  ],
+  "keywords": [
+    "network",
+    "http",
+    "fetch",
+    "debugging",
+    "node"
+  ],
+  "activationEvents": [],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "nodeNetworkMonitor",
+          "title": "Node Network Monitor",
+          "icon": "media/activity-bar-icon.svg"
+        }
+      ]
+    },
+    "views": {
+      "nodeNetworkMonitor": [
+        {
+          "id": "nodeNetworkMonitor.panel",
+          "name": "Requests",
+          "type": "webview"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "nodeNetworkMonitor.clear",
+        "title": "Clear",
+        "icon": "$(clear-all)",
+        "category": "Node Network Monitor"
+      },
+      {
+        "command": "nodeNetworkMonitor.togglePause",
+        "title": "Pause/Resume Capturing",
+        "icon": "$(debug-pause)",
+        "category": "Node Network Monitor"
+      },
+      {
+        "command": "nodeNetworkMonitor.runWithMonitor",
+        "title": "Run Command with Monitor...",
+        "category": "Node Network Monitor"
+      },
+      {
+        "command": "nodeNetworkMonitor.attachCdp",
+        "title": "Attach to Running Process (CDP)...",
+        "category": "Node Network Monitor"
+      },
+      {
+        "command": "nodeNetworkMonitor.showLog",
+        "title": "Show Log",
+        "category": "Node Network Monitor"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "nodeNetworkMonitor.clear",
+          "when": "view == nodeNetworkMonitor.panel",
+          "group": "navigation@1"
+        },
+        {
+          "command": "nodeNetworkMonitor.togglePause",
+          "when": "view == nodeNetworkMonitor.panel",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "terminal": {
+      "profiles": [
+        {
+          "id": "nodeNetworkMonitor.terminalProfile",
+          "title": "Node Network Monitor",
+          "icon": "radio-tower"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Node Network Monitor",
+      "properties": {
+        "nodeNetworkMonitor.captureBodies": {
+          "type": "boolean",
+          "default": true,
+          "description": "Capture request/response bodies in addition to headers."
+        },
+        "nodeNetworkMonitor.maxBodyBytes": {
+          "type": "number",
+          "default": 2000000,
+          "description": "Maximum number of bytes captured per request/response body before truncation. Kept fairly high by default so images can still be previewed."
+        },
+        "nodeNetworkMonitor.maxEntries": {
+          "type": "number",
+          "default": 500,
+          "description": "Maximum number of requests kept in the panel before the oldest are evicted."
+        },
+        "nodeNetworkMonitor.redactHeaders": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [
+            "authorization",
+            "cookie",
+            "set-cookie",
+            "proxy-authorization",
+            "x-api-key"
+          ],
+          "description": "Header names (case-insensitive) whose values are replaced with [redacted] in the panel."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "npm run build -w @network-monitor/core && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "typecheck": "tsc --build && tsc --build tsconfig.webview.json",
+    "clean": "tsc --build --clean && tsc --build tsconfig.webview.json --clean",
+    "clean:vsix": "node clean-vsix.cjs",
+    "test": "npm run typecheck && node --test \"out/**/*.test.js\"",
+    "package": "npm run build && vsce package --no-dependencies",
+    "uninstall:extension": "node uninstall-extension.cjs",
+    "install:extension": "node install-extension.cjs",
+    "reinstall": "npm run clean:vsix && npm run uninstall:extension && npm run package && npm run install:extension"
+  },
+  "devDependencies": {
+    "@network-monitor/core": "0.0.1",
+    "@types/vscode": "^1.90.0",
+    "@vscode/vsce": "^3.9.2",
+    "esbuild": "^0.28.1"
+  }
+}

@@ -2,10 +2,10 @@
 
 Each subfolder here is a standalone, publishable VS Code extension (its own `package.json` with the `vscode` engine field, `activationEvents`, `contributes`, etc.).
 
-Create a new extension with:
+Create a new extension with the official (interactive) generator — there is no `@vscode/create-vscode` npm package:
 
 ```sh
-npm create @vscode/create-vscode -- --path extensions/<name>
+npx --package yo --package generator-code -- yo code
 ```
 
 Extension `tsconfig.json` files should extend the shared base config:

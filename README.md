@@ -35,12 +35,12 @@ npm run build
 | `npm run format:check` | Check formatting without writing           |
 | `npm run test`         | Run tests in all workspaces                |
 
-> Note: `npm run typecheck` errors until at least one project is added to the root `tsconfig.json` `references` array — `tsc --build` requires a non-empty solution.
-
 ## Adding a new extension
 
+There is no `@vscode/create-vscode` npm package — the official scaffolding tool is the interactive Yeoman generator:
+
 ```sh
-npm create @vscode/create-vscode -- --path extensions/<name>
+npx --package yo --package generator-code -- yo code
 ```
 
-Then add its path to the root `tsconfig.json` `references` array and have its own `tsconfig.json` extend `tsconfig.base.json` (see [extensions/README.md](extensions/README.md)).
+Point it at `extensions/<name>` (or scaffold elsewhere and move the files in). Then add its path to the root `tsconfig.json` `references` array and have its own `tsconfig.json` extend `tsconfig.base.json` (see [extensions/README.md](extensions/README.md)).

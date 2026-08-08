@@ -6,6 +6,19 @@ Guidelines for all contributions in this monorepo — for humans and AI agents a
 
 All code, identifiers, comments, commit messages, and documentation are written in **English**, regardless of the language used in chat/conversation with an agent or reviewer.
 
+## Working efficiently (AI agents)
+
+These rules exist to cut wasted tokens, not to cut corners — verification, tests, and quality bars elsewhere in this file still apply in full.
+
+- Don't re-read a file immediately after `Edit`/`Write` "to verify" — the tool already confirms success. Only re-read it if a later step genuinely needs its current content.
+- Prefer targeted reads over whole-file reads: grep for the symbol/section you need, or read a specific line range, instead of dumping an entire file when only part of it is relevant.
+- After the first full build, use incremental `tsc --build` (no `--force`) — only force a full rebuild when the incremental cache is actually suspected stale (e.g. after deleting `dist/` by hand).
+- When checking whether a command passed, prefer a summarized signal (exit code, or grepping for the one result line, e.g. `^# (tests|pass|fail)` for `node --test`) over pasting full verbose command output into context.
+- Batch a logically complete change and verify it once, instead of rebuild → test → package → reinstall after every micro-edit.
+- Run typecheck/tests for the whole workspace in as few commands as possible rather than once per package, unless isolating a failure requires it.
+- No filler in responses to the user: state what changed and why; skip restating the obvious, narrating exploration that didn't lead anywhere, or repeating context the user already has.
+- Comments cost tokens on every future read of a file, not just once — keep following the no-unnecessary-comments rule from the Core principle below strictly.
+
 ## Core principle
 
 Always follow best practices: Clean Code, DRY, SOLID where it makes sense (not dogmatically). Small, focused modules and functions instead of large files with many responsibilities. No dead code, no unused exports, no commented-out code blocks committed. TypeScript `strict` stays on ([tsconfig.base.json](tsconfig.base.json)) — only use `any` when there is truly no better option, and add a comment explaining why.

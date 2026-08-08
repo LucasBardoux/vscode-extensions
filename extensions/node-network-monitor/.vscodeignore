@@ -1,0 +1,11 @@
+src/**
+out/**
+tsconfig*.json
+esbuild.js
+clean-vsix.cjs
+install-extension.cjs
+uninstall-extension.cjs
+*.map
+*.tsbuildinfo
+.gitignore
+**/*.test.js

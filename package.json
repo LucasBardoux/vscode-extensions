@@ -15,11 +15,16 @@
   "scripts": {
     "build": "npm run build --workspaces --if-present",
     "watch": "npm run watch --workspaces --if-present",
+    "clean": "npm run clean --workspaces --if-present",
+    "clean:vsix": "node clean-vsix.cjs",
+    "test": "npm run test --workspaces --if-present",
+    "package": "npm run package --workspaces --if-present",
+    "uninstall:extension": "npm run uninstall:extension --workspaces --if-present",
+    "install:extension": "npm run install:extension --workspaces --if-present",
+    "reinstall": "npm run reinstall --workspaces --if-present",
     "typecheck": "tsc --build",
     "format": "prettier --write .",
-    "format:check": "prettier --check .",
-    "test": "npm run test --workspaces --if-present",
-    "clean": "npm run clean --workspaces --if-present"
+    "format:check": "prettier --check ."
   },
   "devDependencies": {
     "@types/node": "^26.1.2",

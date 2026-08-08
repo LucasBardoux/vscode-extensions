@@ -1,0 +1,13 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Node Network Monitor Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": ["--extensionDevelopmentPath=${workspaceFolder}/extensions/node-network-monitor"],
+      "outFiles": ["${workspaceFolder}/extensions/node-network-monitor/dist/**/*.js"],
+      "preLaunchTask": "npm: build - extensions/node-network-monitor"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "name": "@network-monitor/core",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Framework-agnostic logic for capturing and normalizing outgoing HTTP/fetch traffic from a Node.js process.",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./tracer-preload.cjs": "./dist/collector/tracer-preload.cjs",
+    "./tracer-preload.mjs": "./dist/collector/tracer-preload.mjs"
+  },
+  "scripts": {
+    "build": "tsc --build && node build-preload.cjs",
+    "watch": "tsc --build --watch",
+    "clean": "tsc --build --clean",
+    "test": "npm run build && node --test \"dist/**/*.test.js\""
+  },
+  "dependencies": {
+    "ws": "^8.21.2"
+  },
+  "devDependencies": {
+    "@types/ws": "^8.18.1",
+    "esbuild": "^0.28.1"
+  }
+}
