@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.0.3
+
+- Fixed captured `http`/`https` request URLs missing the port (shown as `localhost` instead of `localhost:3000`) in both the panel list and "Copy as cURL", caused by Node's `ClientRequest.host` not including the port; the port is now read from the `Host` header instead.
+- Redesigned the activity bar icon to match the extension's logo (monitor with a heartbeat/pulse trace).
+
+## 0.0.2
+
+- Version bump only; no functional changes recorded in this history.
+
 ## 0.0.1
 
 - Initial version: capture outgoing `fetch`/`http`/`https` traffic via a preload tracer or CDP attach, view method/headers/bodies in a sidebar panel.

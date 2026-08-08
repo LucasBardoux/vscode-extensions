@@ -16,7 +16,6 @@
     "build": "npm run build --workspaces --if-present",
     "watch": "npm run watch --workspaces --if-present",
     "clean": "npm run clean --workspaces --if-present",
-    "clean:vsix": "node clean-vsix.cjs",
     "test": "npm run test --workspaces --if-present",
     "package": "npm run package --workspaces --if-present",
     "uninstall:extension": "npm run uninstall:extension --workspaces --if-present",

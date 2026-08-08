@@ -69,13 +69,17 @@ function instrumentClientRequest(req: http.ClientRequest, config: TracerConfig):
       bodyTruncated = encoded.truncated;
     }
 
+    // req.host is hostname-only on Node's ClientRequest; the "Host" header
+    // (which Node sets automatically) is the only place the port survives.
+    const host = firstHeaderValue(req.getHeader("host")) ?? req.host;
+
     config.emit({
       type: "request",
       id,
       source: "http",
       processLabel: undefined,
       method: req.method,
-      url: `${req.protocol}//${req.host}${req.path}`,
+      url: `${req.protocol}//${host}${req.path}`,
       headers: redactHeaders(flattenHeaders(req.getHeaders()), config.redactHeaderNames),
       body,
       bodyEncoding,

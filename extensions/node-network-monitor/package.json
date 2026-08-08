@@ -3,7 +3,7 @@
   "displayName": "Node Network Monitor",
   "icon": "media/logo.png",
   "description": "Capture outgoing fetch/http(s) requests made by a Node.js backend and inspect method, headers, and bodies in a sidebar panel.",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "private": true,
   "publisher": "LucasBardoux",
   "license": "MIT",
@@ -33,7 +33,7 @@
         {
           "id": "nodeNetworkMonitor",
           "title": "Node Network Monitor",
-          "icon": "media/activity-bar-icon.svg"
+          "icon": "media/logo.svg"
         }
       ]
     },
