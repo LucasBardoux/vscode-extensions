@@ -138,12 +138,8 @@
     "watch": "node esbuild.js --watch",
     "typecheck": "tsc --build && tsc --build tsconfig.webview.json",
     "clean": "tsc --build --clean && tsc --build tsconfig.webview.json --clean",
-    "clean:vsix": "node clean-vsix.cjs",
     "test": "npm run typecheck && node --test \"out/**/*.test.js\"",
-    "package": "npm run build && vsce package --no-dependencies",
-    "uninstall:extension": "node uninstall-extension.cjs",
-    "install:extension": "node install-extension.cjs",
-    "reinstall": "npm run clean:vsix && npm run uninstall:extension && npm run package && npm run install:extension"
+    "package": "npm run build && vsce package --no-dependencies"
   },
   "devDependencies": {
     "@network-monitor/core": "0.0.1",

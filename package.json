@@ -18,9 +18,10 @@
     "clean": "npm run clean --workspaces --if-present",
     "test": "npm run test --workspaces --if-present",
     "package": "npm run package --workspaces --if-present",
-    "uninstall:extension": "npm run uninstall:extension --workspaces --if-present",
-    "install:extension": "npm run install:extension --workspaces --if-present",
-    "reinstall": "npm run reinstall --workspaces --if-present",
+    "clean:vsix": "bash scripts/clean-vsix.sh",
+    "uninstall:extension": "bash scripts/uninstall-extension.sh",
+    "install:extension": "bash scripts/install-extension.sh",
+    "reinstall": "bash scripts/reinstall.sh",
     "typecheck": "tsc --build",
     "format": "prettier --write .",
     "format:check": "prettier --check ."
